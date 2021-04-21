@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
+import { Route, Switch, BrowserRouter as Router } from 'react-router-dom'
 import axios from 'axios'
 import DashboardPage from './pages/dashboard-page/dashboard-page'
+import SettingsPage from './pages/settings-page/settings-page'
 import DataContext from './context/DataContext'
 import './App.css'
 
@@ -21,12 +23,18 @@ function App () {
   }, [])
 
   return (
-    <div className='App'>
-      <DataContext.Provider value={weatherData}>
-        <DashboardPage />
-      </DataContext.Provider>
+    <Router>
+      <div className='App'>
+        {/* add a header */}
+        <DataContext.Provider value={weatherData}>
+          <Switch>
+            <Route exact path='/' component={DashboardPage} />
+            <Route exact path='/settings' component={SettingsPage} />
+          </Switch>
+        </DataContext.Provider>
+      </div>
+    </Router>
 
-    </div>
   )
 }
 
