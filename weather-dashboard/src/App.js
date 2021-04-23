@@ -17,7 +17,6 @@ function App () {
     axios.get(apiUrl)
       .then((res) => {
         setWeatherData(res.data.list)
-        console.log(res.data.list)
       })
       .catch((error) => {
         console.error(error)

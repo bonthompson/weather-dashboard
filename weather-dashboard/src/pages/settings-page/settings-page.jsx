@@ -2,7 +2,6 @@ import React from 'react'
 import WeatherWidget from '../../components/weather-widget/weather-widget'
 
 const SettingsPage = () => {
-  // todo: remove item based on id
   return (
     <div>
       <h1 style={{ textAlign: 'center' }}>Edit Your Dashboard</h1>

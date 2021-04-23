@@ -18,7 +18,7 @@ const WeatherWidget = (editable) => {
     if (items) {
       try {
         setfilteredItems(JSON.parse(items))
-      } catch { console.log('b', items) }
+      } catch { console.log('err', items) }
     }
   }, [])
 
@@ -31,16 +31,25 @@ const WeatherWidget = (editable) => {
 
       <div className='container'>
         <div className='row'>
-          {/* <i className='wi wi-day-sunny' /> */}
-
           {
             filteredItems && filteredItems.map((item) =>
               <div className='col-md-4 col-lg-3' key={item.id}>
                 {editable.editable === false
                   ? <div className='weather-widget'>
                     <h2>{item.name}</h2>
-                    <div>{item.weather[0].icon}</div>
-                    <p><i className={item.weather[0].description} /></p>
+                    {(() => {
+                      switch (item.weather[0].description) {
+                        case 'clear sky': return <i className='wi wi-day-sunny' />
+                        case 'few clouds': return <i className='wi wi-day-cloudy' />
+                        case 'scattered clouds': return <i className='wi wi-cloud' />
+                        case 'broken clouds': return <i className='wi wi-cloudy' />
+                        case 'shower rain': return <i className='wi wi-day-sleet' />
+                        case 'rain': return <i className='wi wi-day-rain' />
+                        case 'thunderstorm': return <i className='wi wi-day-thunderstorm' />
+                        case 'snow': return <i className='wi wi-day-snow' />
+                        case 'mist': return <i className='wi wi-fog' />
+                      }
+                    })()}
                     <div>{item.weather[0].description}</div>
                     <h3>Temp: {item.main.temp}</h3>
                     <p>Max temp: {item.main.temp_max}</p>
@@ -51,8 +60,19 @@ const WeatherWidget = (editable) => {
                   : <div className='weather-widget-editable-container'>
                     <div onClick={() => setfilteredItems(filteredItems.filter(i => i.id !== item.id))} className='weather-widget-editable'>
                       <h2>{item.name}</h2>
-                      <div>{item.weather[0].icon}</div>
-                      <p><i className={item.weather[0].description} /></p>
+                      {(() => {
+                        switch (item.weather[0].description) {
+                          case 'clear sky': return <i className='wi wi-day-sunny' />
+                          case 'few clouds': return <i className='wi wi-day-cloudy' />
+                          case 'scattered clouds': return <i className='wi wi-cloud' />
+                          case 'broken clouds': return <i className='wi wi-cloudy' />
+                          case 'shower rain': return <i className='wi wi-day-sleet' />
+                          case 'rain': return <i className='wi wi-day-rain' />
+                          case 'thunderstorm': return <i className='wi wi-day-thunderstorm' />
+                          case 'snow': return <i className='wi wi-day-snow' />
+                          case 'mist': return <i className='wi wi-fog' />
+                        }
+                      })()}
                       <div>{item.weather[0].description}</div>
                       <div>
                         <div className='click-to-delete'>Click to delete</div>
@@ -70,7 +90,6 @@ const WeatherWidget = (editable) => {
               {
                 toggle &&
                 data.filter(i => !filteredItems.includes(i)).map((it) =>
-
                   <div
                     onClick={() => setfilteredItems(filteredItems.concat([it]))} key={it.id} className='drop-down-item'
                   >{it.name}
