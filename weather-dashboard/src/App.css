@@ -1,4 +1,5 @@
 .App {
   text-align: left;
-  background: dodgerblue
+  min-height: 100vh;
+  background: dodgerblue;
 }

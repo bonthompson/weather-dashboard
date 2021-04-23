@@ -5,7 +5,7 @@ const DashboardPage = () => {
   // todo: remove item based on id
   return (
     <div>
-      <h1>La météo dans le sud-est de la france</h1>
+      <h1 style={{ textAlign: 'center' }}>La météo dans le sud-est de la france</h1>
       <WeatherWidget editable={false} />
     </div>
   )

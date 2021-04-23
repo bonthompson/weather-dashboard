@@ -1,5 +1,5 @@
 .weather-widget {
-    height: 280px;
+    height: 350px;
     width: 100%;
     background-color: #17141d;
     border-radius: 10px;
@@ -9,6 +9,15 @@
     cursor: pointer;
     color: #fff;
     margin: 20px 0px;
+    padding-bottom: 10%;
+  }
+
+  .weather-widget h2 {
+    font-size: 28px;
+  }
+
+  .weather-widget h3 {
+    font-size: 25px;
   }
   
   .weather-widget:not(:first-child) {
@@ -43,6 +52,7 @@
     cursor: pointer;
     color: #fff;
     margin: 20px 0px;
+    padding-bottom: 20%;
   }
 
   .weather-widget-editable:hover {
@@ -51,16 +61,19 @@
     color: #36343a;
   }
 
-  .weather-widget-editable-container:hover .remove-text {
-    opacity: 1;
-  }
-
- .remove-text {
-    opacity: 0;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    color: #fff;
-  }
   
+.click-to-delete {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.drop-down-item {
+  background: #fff;
+  border: 1px #000 solid;
+}
+.drop-down-item:hover {
+  background: rgb(70, 69, 69)  !important;
+  border: 1px #000 solid;
+  color: #fff;
+  cursor: pointer;
+}

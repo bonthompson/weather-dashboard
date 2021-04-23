@@ -5,6 +5,7 @@ import DashboardPage from './pages/dashboard-page/dashboard-page'
 import SettingsPage from './pages/settings-page/settings-page'
 import DataContext from './context/DataContext'
 import './App.css'
+import Header from './components/header/header'
 
 // bbox [lon-left,lat-bottom,lon-right,lat-top,zoom]
 const apiUrl = 'http://api.openweathermap.org/data/2.5/box/city?bbox=2,43,6,44,10&appid=1f5e53cf4ead950fa98ba2791e9261c7'
@@ -15,17 +16,18 @@ function App () {
   useEffect(() => {
     axios.get(apiUrl)
       .then((res) => {
-        setWeatherData(res.data)
+        setWeatherData(res.data.list)
+        console.log(res.data.list)
       })
       .catch((error) => {
         console.error(error)
       })
   }, [])
-
   return (
     <Router>
       <div className='App'>
         {/* add a header */}
+        <Header />
         <DataContext.Provider value={weatherData}>
           <Switch>
             <Route exact path='/' component={DashboardPage} />

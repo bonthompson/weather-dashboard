@@ -5,7 +5,7 @@ const SettingsPage = () => {
   // todo: remove item based on id
   return (
     <div>
-      <h1>La météo dans le sud-est de la france</h1>
+      <h1 style={{ textAlign: 'center' }}>Edit Your Dashboard</h1>
       <WeatherWidget editable />
     </div>
   )
