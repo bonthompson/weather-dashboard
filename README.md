@@ -14,7 +14,4 @@ Api:
 Icons:
 - http://erikflowers.github.io/weather-icons/
 
-To do:
-- Add a settings page with functionality to edit dashboard
-- Link icons
-- Finish styling
+Run npm install and npm start to run application
